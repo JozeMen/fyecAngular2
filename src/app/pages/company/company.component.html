@@ -1,0 +1,24 @@
+<p>company works!</p>
+<h2>Группы</h2>
+<ul class="company">
+  <li *ngFor="let company of companies">
+    <button [class.selected]="company === selectedCompany" type="button" routerLink="/company/{{ company.name }}">
+      <span class="badge">{{company.name}}</span>
+      <span class="name">{{company.departments}}</span>
+      <ul class="departments" >
+        <li *ngFor="let depart of company.departments">
+          <p> {{depart.departmentName}}</p>
+        </li>
+      </ul>
+
+    </button>
+  </li>
+</ul>
+
+<!--<div class="form-group">-->
+<!--  <label>Имя</label>-->
+<!--  <input class="form-create" name="company_name"  [(ngModel)]="str" ) />-->
+<!--  <button (click)="createCompany(str)">Жмяк</button>-->
+<!--</div>-->
+
+
