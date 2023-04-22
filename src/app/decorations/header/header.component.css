@@ -1,0 +1,11 @@
+.sidenav-nav-item {
+  margin-left: 5%;
+
+}
+
+.sidenav-nav {
+  display: flex;
+}
+a {
+  text-decoration: none;
+}
