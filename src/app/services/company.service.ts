@@ -16,7 +16,10 @@ export class CompanyService {
   getGroupsById(name: string) {
     return this.http.get<Company>(this.companyUrl + "/" + name);
   }
-  public createCompany(name: string) {
-    return this.http.post<Company>(this.companyUrl, name);
+  public createCompany(company: Company) {
+    return this.http.post<Company>(this.companyUrl, company);
+  }
+  public deleteCompany(name: string) {
+    return this.http.delete<Company>(this.companyUrl + "/" + name);
   }
 }

@@ -12,6 +12,7 @@ export class CompanyComponent implements OnInit{
   companies!: Company[];
   selectedCompany!: Company;
   err: boolean = false;
+  company_nameIsReadable: boolean = false;
    str!: string;
 
   constructor(private router: Router, private companyService: CompanyService) {
@@ -34,8 +35,13 @@ export class CompanyComponent implements OnInit{
 
   }
 
-  createCompany(value: string){
-    this.companyService.createCompany(this.str).subscribe({
+  createCompany(value: Company){
+    this.companyService.createCompany(value).subscribe({
+      next: (data) => {}
+    })
+  }
+  deleteCompany(value: string) {
+    this.companyService.deleteCompany(value).subscribe({
       next: (data) => {}
     })
   }

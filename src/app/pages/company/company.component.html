@@ -1,20 +1,50 @@
-<p>company works!</p>
-<h2>Группы</h2>
-<ul class="company">
-  <li *ngFor="let company of companies">
-    <button [class.selected]="company === selectedCompany" type="button" routerLink="/company/{{ company.name }}">
-      <span class="badge">{{company.name}}</span>
-      <span class="name">{{company.departments}}</span>
-      <ul class="departments" >
-        <li *ngFor="let depart of company.departments">
-          <p> {{depart.departmentName}}</p>
-        </li>
-      </ul>
 
-    </button>
-  </li>
-</ul>
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Группы</h1>
+      <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        <button href="" class="btn btn-primary my-2" (click)="company_nameIsReadable= true">Добавить группу</button>
 
+        <button href="#" class="btn btn-secondary my-2">Secondary action</button>
+      </p>
+      <div class="createCompany">
+        <input type="text" class="company_name" *ngIf="company_nameIsReadable" [(ngModel)]="selectedCompany.name">
+        <button class="createCompany" *ngIf="company_nameIsReadable" (click)="createCompany(selectedCompany)"></button>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+<div class="companies_menu" *ngFor="let company of companies" >
+  <div class="album py-5 bg-body-tertiary">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+          <div class="card shadow-sm" >
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{company.name}}</text></svg>
+            <div class="card-body">
+              <p class="card-text"></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Показать</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="deleteCompany(company.name)">Удалить</button>
+                </div>
+  <!--              <small class="text-body-secondary">9 mins</small>-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <!--<div class="form-group">-->
 <!--  <label>Имя</label>-->
 <!--  <input class="form-create" name="company_name"  [(ngModel)]="str" ) />-->
@@ -22,3 +52,18 @@
 <!--</div>-->
 
 
+<!--<h2>Группы</h2>-->
+<!--<ul class="company">-->
+<!--  <li *ngFor="let company of companies">-->
+<!--    <button [class.selected]="company === selectedCompany" type="button" routerLink="/company/{{ company.name }}">-->
+<!--      <span class="badge">{{company.name}}</span>-->
+<!--      <span class="name">{{company.departments}}</span>-->
+<!--      <ul class="departments" >-->
+<!--        <li *ngFor="let depart of company.departments">-->
+<!--          <p> {{depart.departmentName}}</p>-->
+<!--        </li>-->
+<!--      </ul>-->
+
+<!--    </button>-->
+<!--  </li>-->
+<!--</ul>-->
