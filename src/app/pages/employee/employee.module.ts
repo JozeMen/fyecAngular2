@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule} from "@angular/router";
-import {CompanyComponent} from "./company.component";
+import {EmployeeComponent} from "./employee.component";
 import {FormsModule} from "@angular/forms";
-import {CompanyService} from "../../services/company.service";
+import {EmployeeService} from "../../services/employee.service";
 
 
 
 @NgModule({
-  declarations: [CompanyComponent],
+  declarations: [EmployeeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: CompanyComponent
+        component: EmployeeComponent,
       },
     ]),
     FormsModule
   ],
-  providers: [CompanyService]
+  providers: [EmployeeService]
 })
-export class CompanyModule { }
+export class EmployeeModule { }

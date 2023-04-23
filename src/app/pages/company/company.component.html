@@ -6,12 +6,11 @@
       <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
       <p>
         <button href="" class="btn btn-primary my-2" (click)="company_nameIsReadable= true">Добавить группу</button>
-
         <button href="#" class="btn btn-secondary my-2">Secondary action</button>
       </p>
       <div class="createCompany">
         <input type="text" class="company_name" *ngIf="company_nameIsReadable" [(ngModel)]="selectedCompany.name">
-        <button class="createCompany" *ngIf="company_nameIsReadable" (click)="createCompany(selectedCompany)"></button>
+        <button class="createCompany" *ngIf="company_nameIsReadable" (click)="createCompany(selectedCompany)">Жмяк</button>
       </div>
     </div>
 
@@ -28,15 +27,16 @@
         <div class="col">
           <div class="card shadow-sm" >
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{company.name}}</text></svg>
-            <div class="card-body">
-              <p class="card-text"></p>
+            <div class="card-body" >
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Показать</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="company_departmentsAreWriteable= true">Показать</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" (click)="deleteCompany(company.name)">Удалить</button>
                 </div>
-  <!--              <small class="text-body-secondary">9 mins</small>-->
+                <div class="departments_names" *ngFor="let depart of company.departments">
+                  <p class="card-text"  *ngIf="company_departmentsAreWriteable">{{depart.departmentName}}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -44,12 +44,11 @@
       </div>
     </div>
   </div>
+
 </div>
-<!--<div class="form-group">-->
-<!--  <label>Имя</label>-->
-<!--  <input class="form-create" name="company_name"  [(ngModel)]="str" ) />-->
-<!--  <button (click)="createCompany(str)">Жмяк</button>-->
-<!--</div>-->
+
+
+
 
 
 <!--<h2>Группы</h2>-->

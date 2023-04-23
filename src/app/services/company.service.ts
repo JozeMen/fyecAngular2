@@ -13,7 +13,7 @@ export class CompanyService {
     return this.http.get<Company[]>(this.companyUrl);
   }
 
-  getGroupsById(name: string) {
+  getCompany(name: string) {
     return this.http.get<Company>(this.companyUrl + "/" + name);
   }
   public createCompany(company: Company) {
@@ -22,4 +22,5 @@ export class CompanyService {
   public deleteCompany(name: string) {
     return this.http.delete<Company>(this.companyUrl + "/" + name);
   }
+
 }

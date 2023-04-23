@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {DepartmentService} from "../../services/department.service";
 import {Department} from "../../models/department";
+import {Company} from "../../models/company";
 
 @Component({
   selector: 'app-department',
@@ -12,9 +13,14 @@ export class DepartmentComponent implements OnInit {
 
   departments!: Department[]
   department!: Department
+  isReadyToDelete :boolean = false;
   err: boolean = false;
 
   constructor(private router: Router, private departmentService: DepartmentService) {
+  }
+
+  onSelect(company: Company) {
+
   }
 
   ngOnInit(): void {
@@ -27,5 +33,17 @@ export class DepartmentComponent implements OnInit {
         }
       }
     );
+
+    // getDepartmetCompany(value: string) {
+    //
+    // }
+
+    //TODO: сделать поиск компании
+  }
+
+  deleteDepartment(value: string) {
+    this.departmentService.deleteDepartment(value).subscribe({
+      next:(data) => {}
+    })
   }
 }

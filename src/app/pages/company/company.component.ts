@@ -13,7 +13,9 @@ export class CompanyComponent implements OnInit{
   selectedCompany!: Company;
   err: boolean = false;
   company_nameIsReadable: boolean = false;
-   str!: string;
+  company_departmentsAreWriteable: boolean = false;
+
+  str!: string;
 
   constructor(private router: Router, private companyService: CompanyService) {
   }
@@ -31,8 +33,6 @@ export class CompanyComponent implements OnInit{
         }
       }
     );
-
-
   }
 
   createCompany(value: Company){
