@@ -1,0 +1,18 @@
+<table class="table" >
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Номер</th>
+    <th scope="col">Описание</th>
+    <th scope="col">Дата</th>
+    <th scope="col">Кем проведена</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let selectedOperation of operations">
+  <tr>
+    <th scope="row">{{selectedOperation.operationNumber}}</th>
+    <td>{{selectedOperation.description}}</td>
+    <td>{{selectedOperation.operationDate}}</td>
+    <button type="button" class="btn btn-danger" (click)="deleteOperation(selectedOperation.operationNumber)">Удалить</button>
+  </tr>
+  </tbody>
+</table>

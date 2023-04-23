@@ -14,7 +14,7 @@ import { BodyComponent } from './decorations/body/body.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BodyComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule,

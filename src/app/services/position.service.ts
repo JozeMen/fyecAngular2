@@ -12,5 +12,8 @@ export class PositionService {
   public getAllPositions() {
     return this.http.get<Position[]>(this.positionUrl);
   }
+  public deletePosition(id: number) {
+    return this.http.delete<Position>(this.positionUrl + "/" + id);
+  }
 
 }

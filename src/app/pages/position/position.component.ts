@@ -28,5 +28,10 @@ export class PositionComponent implements OnInit{
       }
     );
   }
+  deletePosition(value:number) {
+    this.positionService.deletePosition(value).subscribe({
+      next:(data) => {}
+    })
+  }
 
 }

@@ -17,12 +17,17 @@ export const menuData = [
   {
     routeLink: 'employee',
     icon: 'bx bx-group',
-    label: 'Работник'
+    label: 'Работники'
   },
   {
     routeLink: 'position',
     icon: 'bx bx-group',
     label: 'Вакансии'
+  },
+  {
+    routeLink: 'operation',
+    icon: 'bx bx-group',
+    label: 'История операций'
   }
 
 ];
