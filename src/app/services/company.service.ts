@@ -16,11 +16,19 @@ export class CompanyService {
   getCompany(name: string) {
     return this.http.get<Company>(this.companyUrl + "/" + name);
   }
-  public createCompany(company: Company) {
-    return this.http.post<Company>(this.companyUrl, company);
+  public createCompany(name: string) {
+    return this.http.post<Company>(this.companyUrl, {
+      name
+    });
   }
   public deleteCompany(name: string) {
     return this.http.delete<Company>(this.companyUrl + "/" + name);
+  }
+
+  public editCompany(name1: string, name: string) {
+    return this.http.put<Company>(this.companyUrl +  "/" + name1, {
+      name
+    })
   }
 
 }

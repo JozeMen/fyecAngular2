@@ -1,3 +1,25 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Сотрудники</h1>
+      <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        <button href="" class="btn btn-primary my-2" (click)="operation_nameIsReadable= true">Добавить департамент</button>
+      </p>
+      <div class="createCompany">
+        <input type="operationNumber" name="createCompanyName" class="employee_Id" *ngIf="operation_nameIsReadable" placeholder="Номер" [(ngModel)]="operationNumber">
+        <input type="operationDate" name="createCompanyName" class="company_name" *ngIf="operation_nameIsReadable" placeholder="Дата" [(ngModel)]="operationDate">
+        <input type="description" name="createCompanyName" class="company_name" *ngIf="operation_nameIsReadable" placeholder="Описание" [(ngModel)]="description">
+        <select type="employName" id="inputState" class="form-control" [(ngModel)]="employName">
+          <option selected *ngFor="let employee of employees">{{employee.id}}</option>
+        </select>
+        <button class="createCompany" *ngIf="operation_nameIsReadable" (click)="createOperation(1,operationNumber, operationDate, description)">Жмяк</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <table class="table" >
   <thead class="thead-dark">
   <tr>

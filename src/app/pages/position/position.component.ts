@@ -11,7 +11,11 @@ import {PositionService} from "../../services/position.service";
 export class PositionComponent implements OnInit{
   positions!: Position[];
   selectedPosition!: Position;
+  position_nameIsReadable: boolean = false;
 
+
+  position_name!: string;
+  position_number!: number;
   err: boolean = false;
 
   constructor(private router: Router, private positionService: PositionService) {
@@ -33,5 +37,13 @@ export class PositionComponent implements OnInit{
       next:(data) => {}
     })
   }
+
+  createPosition(value: number, value1: string) {
+    this.positionService.createPosition(value, value1).subscribe({
+      next:(data) => {}
+    })
+
+  }
+
 
 }

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Company} from "../../models/company";
 import {Router} from "@angular/router";
 import {CompanyService} from "../../services/company.service";
+import {HttpHeaders} from "@angular/common/http";
+
 
 @Component({
   selector: 'app-company',
@@ -16,13 +18,17 @@ export class CompanyComponent implements OnInit{
   company_departmentsAreWriteable: boolean = false;
 
   str!: string;
+  newCompany!: string;
+  newName!: string;
+  isEditable!: string;
 
-  constructor(private router: Router, private companyService: CompanyService) {
-  }
+
+  constructor(private router: Router, private companyService: CompanyService) {}
 
   onSelect(company: Company) {
 
   }
+
   ngOnInit(): void {
     this.companyService.getAllCompanies().subscribe({
         next: (data) => {
@@ -35,7 +41,8 @@ export class CompanyComponent implements OnInit{
     );
   }
 
-  createCompany(value: Company){
+
+  createCompany(value: string){
     this.companyService.createCompany(value).subscribe({
       next: (data) => {}
     })
@@ -45,4 +52,11 @@ export class CompanyComponent implements OnInit{
       next: (data) => {}
     })
   }
+  editCompany(value: string, value1: string) {
+    this.companyService.editCompany(value, value1).subscribe({
+    })
+
+  }
+
+
 }

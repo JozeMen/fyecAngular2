@@ -6,15 +6,12 @@
       <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
       <p>
         <button href="" class="btn btn-primary my-2" (click)="company_nameIsReadable= true">Добавить группу</button>
-        <button href="#" class="btn btn-secondary my-2">Secondary action</button>
       </p>
       <div class="createCompany">
-        <input type="text" class="company_name" *ngIf="company_nameIsReadable" [(ngModel)]="selectedCompany.name">
-        <button class="createCompany" *ngIf="company_nameIsReadable" (click)="createCompany(selectedCompany)">Жмяк</button>
+        <input type="newName" name="createCompanyName" class="company_name" placeholder="Название компании" *ngIf="company_nameIsReadable" [(ngModel)]="newName">
+        <button class="createCompany" *ngIf="company_nameIsReadable" (click)="createCompany(newName)">Жмяк</button>
       </div>
     </div>
-
-
   </div>
 </section>
 
@@ -31,8 +28,10 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary" (click)="company_departmentsAreWriteable= true">Показать</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="isEditable= company.name">Изменить</button>
+                  <input type="newCompany" name="editCompany"  id="editComId" *ngIf="isEditable === company.name" value="{{company.name}}" [(ngModel)]="newCompany">
                   <button type="button" class="btn btn-sm btn-outline-secondary" (click)="deleteCompany(company.name)">Удалить</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="isEditable === company.name" (click)="editCompany(company.name, newCompany)">Сохранить</button>
                 </div>
                 <div class="departments_names" *ngFor="let depart of company.departments">
                   <p class="card-text"  *ngIf="company_departmentsAreWriteable">{{depart.departmentName}}</p>

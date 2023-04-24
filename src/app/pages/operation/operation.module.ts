@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {RouterModule} from "@angular/router";
 import {OperationComponent} from "./operation.component";
 import {OperationService} from "../../services/operation.service";
+import {EmployeeService} from "../../services/employee.service";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -16,8 +18,8 @@ import {OperationService} from "../../services/operation.service";
         component: OperationComponent
       },
     ]),
-
+    FormsModule,
   ],
-  providers: [OperationService]
+  providers: [OperationService, EmployeeService]
 })
 export class OperationModule { }

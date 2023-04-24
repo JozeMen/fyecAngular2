@@ -15,6 +15,12 @@ export class EmployeeComponent implements OnInit {
   selectedEmployee!: Employee;
   err: boolean = false;
 
+  employee_nameIsReadable!: boolean;
+
+  newName!: string;
+  newId!: number;
+  newFio!: string;
+  newPhoneNumber!: string;
   constructor(private router: Router, private employeeService: EmployeeService) {
   }
 
@@ -37,6 +43,12 @@ export class EmployeeComponent implements OnInit {
     this.employeeService.deleteEmployee(value).subscribe({
       next:(data) => {}
     })
+  }
+  createEmployee(name: string, value: number, value1: string, value3: string) {
+    this.employeeService.createEmployee(name, value, value1, value3).subscribe({
+      next: (data) => {}
+    })
+
   }
 
 }

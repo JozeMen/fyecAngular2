@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {DepartmentService} from "../../services/department.service";
 import {Department} from "../../models/department";
 import {Company} from "../../models/company";
+import {CompanyService} from "../../services/company.service";
 
 @Component({
   selector: 'app-department',
@@ -15,9 +16,16 @@ export class DepartmentComponent implements OnInit {
   department!: Department
   isReadyToDelete :boolean = false;
   err: boolean = false;
+  department_nameIsReadable: boolean = false;
+  newDepartmentName!: string;
+  newDepartmentAddress!: string;
+  newPhoneNumber!: string;
+  companyName!: string;
+  companies!: Company[]
 
-  constructor(private router: Router, private departmentService: DepartmentService) {
+  constructor(private router: Router, private departmentService: DepartmentService, private companyService: CompanyService) {
   }
+
 
   onSelect(company: Company) {
 
@@ -33,6 +41,15 @@ export class DepartmentComponent implements OnInit {
         }
       }
     );
+      this.companyService.getAllCompanies().subscribe({
+          next: (data) => {
+            this.companies = data;
+          },
+          error: (err) => {
+            this.err = true;
+          }
+        }
+      );
 
     // getDepartmetCompany(value: string) {
     //
@@ -46,4 +63,11 @@ export class DepartmentComponent implements OnInit {
       next:(data) => {}
     })
   }
+
+  createDepartment(name: string, value: string, value1: string, value3: string) {
+    this.departmentService.createDepartment(name, value, value1, value3).subscribe({
+      next: (data) => {}
+    })
+  }
+
 }

@@ -1,3 +1,21 @@
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Сотрудники</h1>
+      <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+      <p>
+        <button href="" class="btn btn-primary my-2" (click)="position_nameIsReadable= true">Добавить департамент</button>
+      </p>
+      <div class="createCompany">
+        <input type="position_number" name="createCompanyName" class="employee_Id" *ngIf="position_nameIsReadable" placeholder="Номер" [(ngModel)]="position_number">
+        <input type="position_name" name="createCompanyName" class="company_name" *ngIf="position_nameIsReadable" placeholder="Название" [(ngModel)]="position_name">
+        <button class="createCompany" *ngIf="position_nameIsReadable" (click)="createPosition(position_number,position_name)">Жмяк</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <div class="positions_menu" *ngFor="let position of positions" >
   <div class="album py-5 bg-body-tertiary">
     <div class="container">
