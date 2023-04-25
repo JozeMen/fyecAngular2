@@ -10,7 +10,11 @@
         <input type="newId" name="createCompanyName" class="employee_Id" *ngIf="employee_nameIsReadable" placeholder="Id" [(ngModel)]="newId">
         <input type="newFio" name="createCompanyName" class="company_name" *ngIf="employee_nameIsReadable" placeholder="Фио" [(ngModel)]="newFio">
         <input type="newPhoneNumber" name="createCompanyName" class="company_name" *ngIf="employee_nameIsReadable" placeholder="Номер телефона" [(ngModel)]="newPhoneNumber">
-        <button class="createCompany" *ngIf="employee_nameIsReadable" (click)="createEmployee('NEwDEpart',newId, newFio, newPhoneNumber)">Жмяк</button>
+
+                <select  *ngIf="employee_nameIsReadable" type="departmentName" id="inputState" class="form-control" [(ngModel)]="departmentName">
+                  <option selected *ngFor="let depart of departments">{{depart.departmentName}}</option>
+                </select>
+        <button class="createCompany" *ngIf="employee_nameIsReadable" (click)="createEmployee(departmentName,newId, newFio, newPhoneNumber)">Жмяк</button>
       </div>
     </div>
   </div>
@@ -31,17 +35,24 @@
             <div class="card-body" >
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-<!--                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="company_departmentsAreWriteable= true">Показать</button>-->
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="readyToShow= employee.fio">Показать</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="selectedTOEdit = employee.id">Изменить</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" (click)="deleteEmployee(employee.id)">Удалить</button>
                 </div>
-<!--                <div class="departments_names" *ngFor="let depart of company.departments">-->
-<!--                  <p class="card-text"  *ngIf="company_departmentsAreWriteable">{{depart.departmentName}}</p>-->
+<!--                <div class="departments_names" *ngFor="let depart of departments">-->
+<!--                  <p class="card-text"  *ngIf="readyToShow=== employee.fio">{{depart.departmentName}}</p>-->
 <!--                </div>-->
               </div>
             </div>
           </div>
         </div>
+        <div class="editForm">
+          <input type="newId" name="editCompany" class="company_name" placeholder="Id" *ngIf="selectedTOEdit === employee.id" [(ngModel)]="newId">
+          <input type="newFio" name="editCompany" class="company_name" placeholder="ФИО" *ngIf="selectedTOEdit === employee.id" [(ngModel)]="newFio">
+          <input type="newPhoneNumber" name="editCompany" class="company_name" placeholder="Номер телефона" *ngIf="selectedTOEdit === employee.id" [(ngModel)]="newPhoneNumber">
+          <button class="createCompany" *ngIf="selectedTOEdit === employee.id" (click)="editEmployee(selectedTOEdit, newId, newFio,newPhoneNumber )">Сохранить</button>
+        </div>
+
       </div>
     </div>
   </div>

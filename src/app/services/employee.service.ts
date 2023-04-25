@@ -34,4 +34,18 @@ export class EmployeeService {
       }
     )
   }
+  public editEmployee(id1: number, id: number, fio: string, phoneNumber: string) {
+    return this.http.put<Employee>(this.employeeUrl + "/" + id1, {
+        id,
+        fio,
+        phoneNumber
+      },
+      {
+        headers: new HttpHeaders({
+          "Access-Control-Allow-Origin": "*"
+
+        })
+      }
+    )
+  }
 }

@@ -5,5 +5,5 @@ export interface Department {
   phoneNumber: string;
   departmentAddress: string;
   company: string;
-  employees: Employee[]
+  employeeDTOList: Employee[];
 }

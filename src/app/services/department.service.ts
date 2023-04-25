@@ -35,6 +35,20 @@ export class DepartmentService {
       })
     });
   }
+  public editDepartment(name: string, departmentName: string,phoneNumber: string , departmentAddress: string) {
+    return this.http.put<Department>(this.departmentyUrl + "/" + name, {
+      departmentName,
+      phoneNumber,
+      departmentAddress
+
+    },{
+      headers: new HttpHeaders({
+        "Access-Control-Allow-Origin": "*"
+
+      })
+    });
+
+  }
 
 
 }

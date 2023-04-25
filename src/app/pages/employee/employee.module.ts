@@ -4,6 +4,7 @@ import {RouterModule} from "@angular/router";
 import {EmployeeComponent} from "./employee.component";
 import {FormsModule} from "@angular/forms";
 import {EmployeeService} from "../../services/employee.service";
+import {DepartmentService} from "../../services/department.service";
 
 
 
@@ -19,6 +20,6 @@ import {EmployeeService} from "../../services/employee.service";
     ]),
     FormsModule
   ],
-  providers: [EmployeeService]
+  providers: [EmployeeService, DepartmentService]
 })
 export class EmployeeModule { }

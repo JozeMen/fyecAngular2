@@ -27,5 +27,16 @@ export class PositionService {
       })
     });
   }
+  public editPosition(oldid: number, position_number: number, position_name: string) {
+    return this.http.put<Position>(this.positionUrl +  "/" + oldid , {
+      position_number,
+      position_name
+    },{
+      headers: new HttpHeaders({
+        "Access-Control-Allow-Origin": "*"
+
+      })
+    });
+  }
 
 }

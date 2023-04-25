@@ -18,6 +18,8 @@ export class PositionComponent implements OnInit{
   position_number!: number;
   err: boolean = false;
 
+  readyToEdit!: number;
+
   constructor(private router: Router, private positionService: PositionService) {
   }
 
@@ -43,6 +45,12 @@ export class PositionComponent implements OnInit{
       next:(data) => {}
     })
 
+  }
+
+  editPosition(value0: number, value: number, value1: string) {
+    this.positionService.editPosition(value0, value, value1).subscribe({
+      next:(data) => {}
+    })
   }
 
 

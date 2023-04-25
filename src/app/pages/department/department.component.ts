@@ -14,7 +14,7 @@ export class DepartmentComponent implements OnInit {
 
   departments!: Department[]
   department!: Department
-  isReadyToDelete :boolean = false;
+  isReadyToEdit :boolean = false;
   err: boolean = false;
   department_nameIsReadable: boolean = false;
   newDepartmentName!: string;
@@ -22,6 +22,10 @@ export class DepartmentComponent implements OnInit {
   newPhoneNumber!: string;
   companyName!: string;
   companies!: Company[]
+  employee_departmentsAreWriteable: boolean =false;
+  selectedTOEdit!: string;
+
+  readyToShowEmployees!: string;
 
   constructor(private router: Router, private departmentService: DepartmentService, private companyService: CompanyService) {
   }
@@ -66,6 +70,12 @@ export class DepartmentComponent implements OnInit {
 
   createDepartment(name: string, value: string, value1: string, value3: string) {
     this.departmentService.createDepartment(name, value, value1, value3).subscribe({
+      next: (data) => {}
+    })
+  }
+
+  editDepartment(name: string, value: string, value1: string, value3: string) {
+    this.departmentService.editDepartment(name, value, value1, value3).subscribe({
       next: (data) => {}
     })
   }

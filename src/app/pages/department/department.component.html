@@ -1,7 +1,7 @@
 <section class="py-5 text-center container">
   <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="fw-light">Сотрудники</h1>
+      <h1 class="fw-light">Департаменты</h1>
       <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
       <p>
         <button href="" class="btn btn-primary my-2" (click)="department_nameIsReadable= true">Добавить департамент</button>
@@ -10,7 +10,7 @@
         <input type="newDepartmentName" name="createCompanyName" class="employee_Id" *ngIf="department_nameIsReadable" placeholder="Название" [(ngModel)]="newDepartmentName">
         <input type="newDepartmentAddress" name="createCompanyName" class="company_name" *ngIf="department_nameIsReadable" placeholder="Адрес" [(ngModel)]="newDepartmentAddress">
         <input type="newPhoneNumber" name="createCompanyName" class="company_name" *ngIf="department_nameIsReadable" placeholder="Номер телефона" [(ngModel)]="newPhoneNumber">
-        <select type="companyName" id="inputState" class="form-control" [(ngModel)]="companyName">
+        <select  *ngIf="department_nameIsReadable" type="companyName" id="inputState" class="form-control" [(ngModel)]="companyName">
           <option selected *ngFor="let company of companies">{{company.name}}</option>
         </select>
         <button class="createCompany" *ngIf="department_nameIsReadable" (click)="createDepartment(companyName,newDepartmentName, newDepartmentAddress, newPhoneNumber)">Жмяк</button>
@@ -18,44 +18,6 @@
     </div>
   </div>
 </section>
-
-
-
-<!--<div class="allDeprartments">-->
-<!--<div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center" *ngFor="let depart of departments">-->
-<!--  <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px" data-bs-theme="light">-->
-<!--    <li><button class="dropdown-item rounded-2 active" (click)="isReadyToDelete = true" )>{{depart.departmentName}}</button></li>-->
-<!--    <li><button class="dropdown-item rounded-2" >{{depart.departmentAddress}}</button></li>-->
-<!--    <li><button class="dropdown-item rounded-2" >{{depart.phoneNumber}}</button></li>-->
-<!--    <li><hr class="dropdown-divider"></li>-->
-<!--    <li><button class="dropdown-item rounded-2" >ТУт будет имя компании</button></li>-->
-<!--    <label *ngIf="isReadyToDelete"> gsfdg</label>-->
-
-<!--  </ul>-->
-<!--</div>-->
-<!--</div>-->
-
-
-<!--<section class="py-5 text-center container">-->
-<!--  <div class="row py-lg-5">-->
-<!--    <div class="col-lg-6 col-md-8 mx-auto">-->
-<!--      <h1 class="fw-light">Группы</h1>-->
-<!--      <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>-->
-<!--      <p>-->
-<!--        <button href="" class="btn btn-primary my-2" (click)="company_nameIsReadable= true">Добавить группу</button>-->
-<!--        <button href="#" class="btn btn-secondary my-2">Secondary action</button>-->
-<!--      </p>-->
-<!--      <div class="createCompany">-->
-<!--        <input type="text" class="company_name" *ngIf="company_nameIsReadable" [(ngModel)]="selectedCompany.name">-->
-<!--        <button class="createCompany" *ngIf="company_nameIsReadable" (click)="createCompany(selectedCompany)">Жмяк</button>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-<!--  </div>-->
-<!--</section>-->
-
-
 
 <div class="companies_menu" *ngFor="let depart of departments" >
   <div class="album py-5 bg-body-tertiary">
@@ -67,21 +29,31 @@
               <text font-size="30" x="10%" y="25%" fill="#eceeef" dy=".3em">{{depart.departmentName}}</text>
               <text x="50%" y="57%" fill="#eceeef" dy=".3em">Номер телефона: {{depart.phoneNumber}}</text>
               <text x="50%" y="64%" fill="#eceeef" dy=".3em">Адрес: {{depart.departmentAddress}}</text>
-              <text class="employees" *ngFor="let employ of depart.employees">
-                <text x="50%" y="71%" fill="#eceeef" dy=".3em">Работники: {{employ.phoneNumber}}</text>
-              </text>
+<!--              <text class="employees" *ngFor="let employ of depart.employees">-->
+<!--                <text x="50%" y="71%" fill="#eceeef" dy=".3em">Работники: {{employ.phoneNumber}}</text>-->
+<!--              </text>-->
             </svg>
             <div class="card-body" >
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="readyToShowEmployees= depart.departmentName">Показать</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="selectedTOEdit = depart.departmentName">Изменить</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary" (click)="deleteDepartment(depart.departmentName)">Удалить</button>
+                </div>
+                <div class="departments_names" *ngFor="let employee of depart.employeeDTOList">
+                  <p class="card-text"  *ngIf="readyToShowEmployees === depart.departmentName">{{employee.fio}}</p>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
-      </div>
+        <div class="editForm">
+          <input type="newDepartmentName" name="editCompany" class="company_name" placeholder="Название департамента" *ngIf="selectedTOEdit === depart.departmentName" [(ngModel)]="newDepartmentName">
+          <input type="newDepartmentAddress" name="editCompany" class="company_name" placeholder="Адрес" *ngIf="selectedTOEdit === depart.departmentName" [(ngModel)]="newDepartmentAddress">
+          <input type="newPhoneNumber" name="editCompany" class="company_name" placeholder="Номер телефона" *ngIf="selectedTOEdit === depart.departmentName" [(ngModel)]="newPhoneNumber">
+          <button class="createCompany" *ngIf="selectedTOEdit === depart.departmentName" (click)="editDepartment(selectedTOEdit, newDepartmentName, newDepartmentAddress,newPhoneNumber )">Сохранить</button>
+        </div>
     </div>
   </div>
 

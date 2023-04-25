@@ -15,13 +15,14 @@ export class OperationComponent implements  OnInit{
   selectedOperation!: Operation;
   err: boolean = false;
 
-  employName!: number;
+  employName!: string;
   employees!: Employee[];
   operationNumber!: number;
   operationDate!: Date;
   description!: string;
 
   operation_nameIsReadable: boolean = false;
+  temp!: number;
 
 
   constructor(private router: Router, private operationService: OperationService, private employeeService: EmployeeService) {
